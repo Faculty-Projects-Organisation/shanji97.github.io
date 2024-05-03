@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <title>Kočevje map</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+        integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body,
+        #map {
+            height: 100%;
+            width: 100vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([45.642961, 14.859383], 12); // Set the initial view to Kočevje, Slovenia
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Load JSON data
+        fetch('locations.json')
+            .then(response => response.json())
+            .then(data => {
+                // Iterate over JSON data
+                data.forEach(item => {
+                    // Create Leaflet element based on type
+                    if (item.type === 'marker') {
+                        setupMarker(item, map);
+                    } else if (item.type === 'circle') {
+                        setUpCircle(item, map)
+                    }
+                    // Add other conditions for other types of elements (icons, polygons, etc.)
+                });
+            })
+            .catch(error => console.error('Error loading JSON data:', error));
+
+        $('[data-fancybox="images"]').fancybox({
+            loop: true, // Enable looping of images
+            thumbs: {
+                autoStart: true, // Automatically show thumbnails
+                axis: 'x' // Display thumbnails horizontally
+            },
+            image: {
+                scale: false // Disable scaling of images
+            },
+            // Add any other options you want to customize the carousel
+        });
+
+        function setupMarker(item, map) {
+            var marker = L.marker([item.latitude, item.longitude]).addTo(map);
+            var popupContent = `
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <!-- Add more content as needed -->`;
+            if (item.images != undefined) {
+                var imageContent = '';
+                var isOnlyOneImage = item.images.length > 1;
+                for (var i = 0; i < item.images.length; i++) {
+                    if (i == 0) {
+                        imageContent += `<a data-fancybox="images" href="${item.images[i]}"><i class="fas fa-camera"></i></a>`;
+                    } else {
+                        imageContent += `<a data-fancybox="images" href="${item.images[i]}"></a>`;
+                    }
+                }
+                popupContent += imageContent;
+            }
+            marker.bindPopup(popupContent);
+        }
+
+        function setUpCircle(item, map) {
+            var circle = L.circle([item.latitude, item.longitude], {
+                radius: item.radius,
+                // Add any other circle options
+            }).addTo(map);
+        }
+    </script>
+</body>
+</html>
