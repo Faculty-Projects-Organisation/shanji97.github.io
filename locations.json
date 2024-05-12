@@ -20,7 +20,12 @@
       "novibreg/12.jpg",
       "novibreg/13.jpg",
       "novibreg/14.jpg"
-    ]
+    ],
+    "icon":{
+      "url": "icons\\treehouse.png",
+      "width": 50,
+      "height": 50
+    }
   },
   {
     "type":"marker",
