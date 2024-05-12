@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sl">
+
 <head>
     <title>Kočevje map</title>
     <meta charset="UTF-8" />
@@ -37,9 +38,26 @@
 <body>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([45.642961, 14.859383], 12); // Set the initial view to Kočevje, Slovenia
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
+
+        // Settings
+        var kocevjeSettings = {
+            minimalZoom: 12,
+            maximalZoom: 20,
+            defaultZoom: 11,
+
+            latitude: 45.642961,
+            longitude: 14.859383
+        };
+
+
+
+
+
+        var map = L.map('map').setView([kocevjeSettings.latitude, kocevjeSettings.longitude], kocevjeSettings.defaultZoom); // Set the initial view to Kočevje, Slovenia
+        // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://api.mapbox.com/styles/v1/shanji97/clvy7j9ve02aa01qzen8c70cg/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2hhbmppOTciLCJhIjoiY2x2d2UzZHR0MWdiajJqbzlzMWF1cDUxMiJ9.0uHEX89FEbZmbhTiGlFNIA', {
+            minZoom: kocevjeSettings.minimalZoom,
+            maxZoom: kocevjeSettings.maximalZoom,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
@@ -73,14 +91,28 @@
         });
 
         function setupMarker(item, map) {
-            var marker = L.marker([item.latitude, item.longitude]).addTo(map);
+
+
+
+
+            var marker = L.marker([item.latitude, item.longitude]);
+            if (item.icon) {
+                var iconImage = new Image();
+                iconImage.src = item.icon.url;
+                var marker_icon = L.icon({
+                    iconUrl: item.icon.url,
+                    iconSize: [item.icon.width, item.icon.height]
+
+                });
+                marker = L.marker([item.latitude, item.longitude], { icon: marker_icon });
+            }
+            marker.addTo(map);
             var popupContent = `
                         <h3>${item.name}</h3>
                         <p>${item.description}</p>
                         <!-- Add more content as needed -->`;
             if (item.images != undefined) {
                 var imageContent = '';
-                var isOnlyOneImage = item.images.length > 1;
                 for (var i = 0; i < item.images.length; i++) {
                     if (i == 0) {
                         imageContent += `<a data-fancybox="images" href="${item.images[i]}"><i class="fas fa-camera"></i></a>`;
@@ -93,6 +125,10 @@
             marker.bindPopup(popupContent);
         }
 
+        function returnMarkerwithIcon(icon) {
+
+        }
+
         function setUpCircle(item, map) {
             var circle = L.circle([item.latitude, item.longitude], {
                 radius: item.radius,
@@ -101,4 +137,5 @@
         }
     </script>
 </body>
+
 </html>
