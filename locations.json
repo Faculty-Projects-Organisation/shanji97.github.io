@@ -21,6 +21,10 @@
       "novibreg/13.jpg",
       "novibreg/14.jpg"
     ],
+    
+    "background":{
+      "url":"novibreg/1.jpg"
+    },
     "icon":{
       "url": "icons\\treehouse.png",
       "width": 50,
@@ -65,12 +69,5 @@
       "trnovec/16.jpg",
       "trnovec/17.jpg"
     ]
-  },
-  {
-    "type": "circle",
-    "latitude": 45.7,
-    "longitude": 14.95,
-    "radius": 500
   }
-  
 ]

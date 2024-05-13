@@ -32,6 +32,27 @@
             height: 100%;
             width: 100vw;
         }
+
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.0);
+        }
+
+        .outer {
+            margin: 0px 0px 0px 0px;
+
+            border-radius: 15px;
+            color: #333;
+            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+            overflow: auto;
+        }
+
+        .inner {
+            margin: 20px 20px 20px 20px !important;
+            background-color: rgba(255, 255, 255, .70);
+            border-radius: 10px;
+        }
     </style>
 </head>
 
@@ -49,10 +70,6 @@
             longitude: 14.859383
         };
 
-
-
-
-
         var map = L.map('map').setView([kocevjeSettings.latitude, kocevjeSettings.longitude], kocevjeSettings.defaultZoom); // Set the initial view to Kočevje, Slovenia
         // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         L.tileLayer('https://api.mapbox.com/styles/v1/shanji97/clvy7j9ve02aa01qzen8c70cg/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2hhbmppOTciLCJhIjoiY2x2d2UzZHR0MWdiajJqbzlzMWF1cDUxMiJ9.0uHEX89FEbZmbhTiGlFNIA', {
@@ -66,14 +83,14 @@
             .then(response => response.json())
             .then(data => {
                 // Iterate over JSON data
+                var index = 0;
                 data.forEach(item => {
                     // Create Leaflet element based on type
                     if (item.type === 'marker') {
-                        setupMarker(item, map);
-                    } else if (item.type === 'circle') {
-                        setUpCircle(item, map)
+                        setupMarker(item, map, index);
                     }
                     // Add other conditions for other types of elements (icons, polygons, etc.)
+                    index++;
                 });
             })
             .catch(error => console.error('Error loading JSON data:', error));
@@ -90,11 +107,7 @@
             // Add any other options you want to customize the carousel
         });
 
-        function setupMarker(item, map) {
-
-
-
-
+        function setupMarker(item, map, index) {
             var marker = L.marker([item.latitude, item.longitude]);
             if (item.icon) {
                 var iconImage = new Image();
@@ -107,10 +120,34 @@
                 marker = L.marker([item.latitude, item.longitude], { icon: marker_icon });
             }
             marker.addTo(map);
-            var popupContent = `
-                        <h3>${item.name}</h3>
-                        <p>${item.description}</p>
-                        <!-- Add more content as needed -->`;
+
+            var outer = `<div class='outer' style="background-color: white;">`;
+            if (item.background && item.background.url) {
+
+
+               outer =`<div class="outer" style="background-image:url('${item.background.url}'); background-size: 100% 100%; background-repeat:no-repeat; background-position: center">`;
+                /*var imageUrl = item.background.url;
+                var backgroundCss = `url(${imageUrl})`;
+                console.log("Background image URL:", imageUrl);
+                console.log("Background CSS:", backgroundCss);
+
+                var popupContent = $('.leaflet-popup-content-wrapper').eq(index).find('.outer');
+
+                // Set background image
+                popupContent.css('background-image', backgroundCss);
+                popupContent.css('background-size', 'contain');
+                popupContent.css('background-repeat', 'no-repeat');
+                popupContent.css('background-position', 'center');*/
+                
+            }
+
+
+
+
+            var popupContent = `${outer}<div class="inner">
+                        <h3 class="bkgd">${item.name}</h3>
+                        <p>${item.description}</p></div></div>`;
+
             if (item.images != undefined) {
                 var imageContent = '';
                 for (var i = 0; i < item.images.length; i++) {
@@ -120,21 +157,22 @@
                         imageContent += `<a data-fancybox="images" href="${item.images[i]}"></a>`;
                     }
                 }
-                popupContent += imageContent;
+                popupContent += imageContent + "</div>";
             }
             marker.bindPopup(popupContent);
+
+            // if (item.background != undefined && item.background.url != undefined) {
+            //     var imageUrl = `${item.background.url}`;
+            //     console.log(imageUrl);
+            //     $('.outer').eq(index).css('background-image', 'url(' + imageUrl + '');
+
+            //     // $(".leaflet-popup")[index].css('background-color', 'red');
+
+            // }
+
         }
 
-        function returnMarkerwithIcon(icon) {
 
-        }
-
-        function setUpCircle(item, map) {
-            var circle = L.circle([item.latitude, item.longitude], {
-                radius: item.radius,
-                // Add any other circle options
-            }).addTo(map);
-        }
     </script>
 </body>
 
