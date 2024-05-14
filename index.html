@@ -41,17 +41,22 @@
 
         .outer {
             margin: 0px 0px 0px 0px;
-
             border-radius: 15px;
             color: #333;
             box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
             overflow: auto;
         }
-
+        
         .inner {
-            margin: 20px 20px 20px 20px !important;
-            background-color: rgba(255, 255, 255, .70);
-            border-radius: 10px;
+            margin: 50px 15px !important;
+            background-color: rgba(255, 255, 255, .9);
+            border-radius: 5px;
+            padding: 25px 25px 10px 25px;
+        }
+
+        .images{
+            margin-top: 60px;
+            margin-bottom: 0px;
         }
     </style>
 </head>
@@ -65,7 +70,6 @@
             minimalZoom: 12,
             maximalZoom: 20,
             defaultZoom: 11,
-
             latitude: 45.642961,
             longitude: 14.859383
         };
@@ -122,28 +126,17 @@
             marker.addTo(map);
 
             var outer = `<div class='outer' style="background-color: white;">`;
-            if (item.background && item.background.url) {
+            if (item.background) {
 
 
-               outer =`<div class="outer" style="background-image:url('${item.background.url}'); background-size: 100% 100%; background-repeat:no-repeat; background-position: center">`;
-                /*var imageUrl = item.background.url;
-                var backgroundCss = `url(${imageUrl})`;
-                console.log("Background image URL:", imageUrl);
-                console.log("Background CSS:", backgroundCss);
+                outer = `<div class="outer" style="background-image:url('${item.background}'); background-size: 100% 100%; background-repeat:no-repeat; background-position: center">`;
 
-                var popupContent = $('.leaflet-popup-content-wrapper').eq(index).find('.outer');
 
-                // Set background image
-                popupContent.css('background-image', backgroundCss);
-                popupContent.css('background-size', 'contain');
-                popupContent.css('background-repeat', 'no-repeat');
-                popupContent.css('background-position', 'center');*/
-                
             }
-            
+
             var content = '';
             if (item.images != undefined) {
-                var imageContent = '';
+                var imageContent = '<div class="images">';
                 for (var i = 0; i < item.images.length; i++) {
                     if (i == 0) {
                         imageContent += `<a data-fancybox="images" href="${item.images[i]}"><i class="fas fa-camera"></i></a>`;
@@ -151,7 +144,7 @@
                         imageContent += `<a data-fancybox="images" href="${item.images[i]}"></a>`;
                     }
                 }
-                 content+= imageContent;
+                content += imageContent + '</div>';
             }
 
 
@@ -159,18 +152,8 @@
                         <h3 class="bkgd">${item.name}</h3>
                         <p>${item.description}</p>${content}</div></div>`;
 
-           
+
             marker.bindPopup(popupContent);
-
-            // if (item.background != undefined && item.background.url != undefined) {
-            //     var imageUrl = `${item.background.url}`;
-            //     console.log(imageUrl);
-            //     $('.outer').eq(index).css('background-image', 'url(' + imageUrl + '');
-
-            //     // $(".leaflet-popup")[index].css('background-color', 'red');
-
-            // }
-
         }
 
 
