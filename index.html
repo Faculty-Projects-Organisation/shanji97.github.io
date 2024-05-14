@@ -140,14 +140,8 @@
                 popupContent.css('background-position', 'center');*/
                 
             }
-
-
-
-
-            var popupContent = `${outer}<div class="inner">
-                        <h3 class="bkgd">${item.name}</h3>
-                        <p>${item.description}</p></div></div>`;
-
+            
+            var content = '';
             if (item.images != undefined) {
                 var imageContent = '';
                 for (var i = 0; i < item.images.length; i++) {
@@ -157,8 +151,15 @@
                         imageContent += `<a data-fancybox="images" href="${item.images[i]}"></a>`;
                     }
                 }
-                popupContent += imageContent + "</div>";
+                 content+= imageContent;
             }
+
+
+            var popupContent = `${outer}<div class="inner">
+                        <h3 class="bkgd">${item.name}</h3>
+                        <p>${item.description}</p>${content}</div></div>`;
+
+           
             marker.bindPopup(popupContent);
 
             // if (item.background != undefined && item.background.url != undefined) {

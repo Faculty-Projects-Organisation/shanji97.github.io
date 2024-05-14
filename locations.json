@@ -1,56 +1,12 @@
 [
+  
   {
     "type": "marker",
-    "latitude": 45.685297,
-    "longitude": 14.966989,
-    "name": "Novi breg",
-    "description": "Novi Breg was a village inhabited by Gottschee Germans. It had 12 houses before the Second World War. On 12 June 1942 member of the Executive Committee of the Liberation Front, the Central Committee of the Communist Party of Slovenia, and the Partisan Supreme Command met here. There was a large Partisan base on Kamenjak Hill northwest of the settlement, and the Partisan Supreme Command lodged itself in cabins on Royal Rock Hill (Slovene: Kraljevi kamen) to the northeast, where they also built several bunkers for use as warehouses. On 14 August 1942, during the Rog Offensive by Italian forces, the Executive Committee and Central Committee members also withdrew to a bunker on Royal Rock Hill. During this time settlement was burned by Italian troops. They remained there until 23 August, and then went to Podlipoglav and from there to the Polhov Gradec Hills. The settlement was not rebuilt after the war.",
-    "images": [
-      "novibreg/1.jpg",
-      "novibreg/2.jpg",
-      "novibreg/3.jpg",
-      "novibreg/4.jpg",
-      "novibreg/5.jpg",
-      "novibreg/6.jpg",
-      "novibreg/7.jpg",
-      "novibreg/8.jpg",
-      "novibreg/9.jpg",
-      "novibreg/10.jpg",
-      "novibreg/11.jpg",
-      "novibreg/12.jpg",
-      "novibreg/13.jpg",
-      "novibreg/14.jpg"
-    ],
-    
-    "background":{
-      "url":"novibreg/1.jpg"
-    },
-    "icon":{
-      "url": "icons\\treehouse.png",
-      "width": 50,
-      "height": 50
-    }
-  },
-  {
-    "type":"marker",
-    "latitude": 45.7026388889,
-    "longitude": 14.9283333333,
-    "name": "Cesta",
-    "description":"The name Cesta means 'road'. Places with this name in Slovenia lie along roads that predated Slavic settlement in the area. The name of the village was changed from Cesta to Cesta pri Starem Logu in 1953. Cesta was a village inhabited by Gottschee Germans. Before the Second World War it had eight houses. In 1942 a 'labor battalion' was stationed here in charge of working the fields, harvesting the crops, and mowing. The village was burned by Italian troops in July 1942 during the Rog Offensive and was never rebuilt. Cesta was presumably deemed annexed by Pugled pri Starem Logu in 1953 because it is not mentioned in later enumerations of settlements in the area (e.g., in 1955 and 1957).",
-    "images":[  "cesta/1.jpg",
-    "cesta/2.jpg",
-    "cesta/3.jpg",
-    "cesta/4.jpg",
-    "cesta/5.jpg"
-  ]
-  },
-  {
-    "type": "marker",
-    "latitude": 45.674989,
-    "longitude": 14.993053,
+    "latitude": 45.677221,
+    "longitude": 14.944541,
     "name": "Trnovec",
     "description": "Trnovec was attested in historical sources as Tieffenreutter in 1574. After the Second World War, the settlement of Trnovec was administratively combined with Podstenice and shared that name. It was separated again from Podstenice in 1988 and Trnovec was reestablished as a separate settlement.Trnovec was settled by Gottschee Germans in the Middle Ages. It had 17 houses in the early 20th century.At the start of the Second World War, its original population was evicted. As part of the Rog Offensive in the summer of 1942, the village was burned by Italian forces. After the Italian surrender in 1943, the Yugoslav Partisans used a site below the village to store ammunition.",
-    "images":  [
+    "images": [
       "trnovec/1.jpg",
       "trnovec/2.jpg",
       "trnovec/3.jpg",
@@ -68,6 +24,102 @@
       "trnovec/15.jpg",
       "trnovec/16.jpg",
       "trnovec/17.jpg"
-    ]
+    ],
+    "icon": {
+      "url": "icons\\hiska4.png",
+      "width": 50,
+      "height": 50
+    }
+  },
+  {
+    "type": "marker",
+    "latitude": 45.564999,
+    "longitude": 14.807928,
+    "name": "Sadni hrib",
+    "description": "Sadni hrib opis",
+    "images": [
+      "trnovec/1.jpg"
+    ],
+    "icon": {
+      "url": "icons\\hiska3.png",
+      "width": 50,
+      "height": 50
+    }
+  },
+  {
+    "type": "marker",
+    "latitude": 45.586130,
+    "longitude": 14.999361,
+    "name": "Svetli potok",
+    "description": "Svetli potok opis",
+    "images": [
+      "trnovec/1.jpg"
+    ],
+    "icon": {
+      "url": "icons\\hiska1.png",
+      "width": 50,
+      "height": 50
+    }
+  },
+  {
+    "type": "marker",
+    "latitude": 45.664844,
+    "longitude": 14.824620,
+    "name": "Mostiček v Slovenski vasi",
+    "description": "Slovenska vas opis",
+    "images": [
+      "trnovec/1.jpg"
+    ],
+    "icon": {
+      "url": "icons\\akcije2.png",
+      "width": 50,
+      "height": 50
+    }
+  },
+  {
+    "type": "marker",
+    "latitude": 45.636399,
+    "longitude": 14.867546,
+    "name": "Igrišče v UHM",
+    "description": "UHM opis",
+    "images": [
+      "trnovec/1.jpg"
+    ],
+    "icon": {
+      "url": "icons\\akcije1.png",
+      "width": 50,
+      "height": 50
+    }
+  },
+  {
+    "type": "marker",
+    "latitude": 45.648625,
+    "longitude": 14.846501,
+    "name": "Ograja v mahovniku",
+    "description": "Mahovnik opis",
+    "images": [
+      "trnovec/1.jpg"
+    ],
+    "icon": {
+      "url": "icons\\akcije3.png",
+      "width": 50,
+      "height": 50
+    }
+  },
+  {
+    "type": "marker",
+    "latitude": 45.641045,
+    "longitude": 14.861719,
+    "name": "Notranji skatepark",
+    "description": "Skatepark opis",
+    "images": [
+      "skate1.jpeg",
+      "skate2.jpeg"
+    ],
+    "icon": {
+      "url": "icons\\skatepark.png",
+      "width": 50,
+      "height": 50
+    }
   }
 ]
