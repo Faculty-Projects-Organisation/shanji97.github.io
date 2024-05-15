@@ -46,7 +46,7 @@
             box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
             overflow: auto;
         }
-        
+
         .inner {
             margin: 50px 15px !important;
             background-color: rgba(255, 255, 255, .9);
@@ -54,9 +54,15 @@
             padding: 25px 25px 10px 25px;
         }
 
-        .images{
+        .images {
             margin-top: 60px;
             margin-bottom: 0px;
+        }
+
+        .insideIcon{
+            position: relative;
+            bottom: -30px;
+            left: -40px;
         }
     </style>
 </head>
@@ -127,19 +133,22 @@
 
             var outer = `<div class='outer' style="background-color: white;">`;
             if (item.background) {
-
-
                 outer = `<div class="outer" style="background-image:url('${item.background}'); background-size: 100% 100%; background-repeat:no-repeat; background-position: center">`;
-
-
             }
 
+            var divI = "";
+            if (item.divIcon != undefined) {
+                divI =`<img class="insideIcon" height="${item.divIcon.height}" width="${item.divIcon.width}" src="${item.divIcon.url}" />`;
+            }
+            else{
+                divI = `<i class="fas fa-camera"></i>`;
+            }
             var content = '';
             if (item.images != undefined) {
                 var imageContent = '<div class="images">';
                 for (var i = 0; i < item.images.length; i++) {
                     if (i == 0) {
-                        imageContent += `<a data-fancybox="images" href="${item.images[i]}"><i class="fas fa-camera"></i></a>`;
+                        imageContent += `<a data-fancybox="images" href="${item.images[i]}">${divI}</a>`;
                     } else {
                         imageContent += `<a data-fancybox="images" href="${item.images[i]}"></a>`;
                     }
@@ -155,9 +164,6 @@
 
             marker.bindPopup(popupContent);
         }
-
-
     </script>
 </body>
-
 </html>
