@@ -20,6 +20,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         body {
             padding: 0;
@@ -37,6 +40,14 @@
         .leaflet-popup-tip {
             background-color: rgba(0, 0, 0, 0);
             box-shadow: 0 3px 14px rgba(0, 0, 0, 0.0);
+        }
+
+        .bkgd {
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: normal;
+            font-variation-settings: "slnt" 0;
         }
 
         .outer {
@@ -174,7 +185,7 @@
                 content += imageContent + '</div>';
             }
             var architect = "";
-            if(item.architect){
+            if (item.architect) {
                 architect = `<h4>Arhitekt: ${item.architect}</h4>`;
             }
 
