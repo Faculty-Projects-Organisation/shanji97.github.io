@@ -1,10 +1,11 @@
 [
   {
-    "type": "marker",
+    "type": "location",
     "latitude": 45.685297,
     "longitude": 14.966989,
     "name": "Novi breg",
-    "description": "V okolici Novega brega stoji drevesna hiška danskega arhitekta Bjarke Ingelsa, znanega po svojem eksperimentalnem pristopu k arhitekturi, ki združuje funkcionalnost, estetiko in trajnostne vidike. Novi Breg je bil naseljen s Gottscheejskimi Nemci. Pred drugo svetovno vojno je vas imela 12 hiš. Naselje je bilo požgano med drugo svetovno vojno in nikoli obnovljeno. Hiška lahko udobno nastani dve osebi in ponuja izjemno možnost sprostitve sredi neokrnjene kočevske narave.",
+    "architect": "Bjarke Ingels",
+    "description": "V okolici Novega brega stoji drevesna hiška danskega arhitekta Bjarke Ingelsa, znanega po svojem eksperimentalnem pristopu k arhitekturi, ki združuje funkcionalnost, estetiko in trajnostne vidike. Novi Breg je bil naseljen s Gottscheejskimi Nemci. Pred drugo svetovno vojno je vas imela 12 hiš. Naselje je bilo požgano med drugo svetovno vojno in nikoli obnovljeno. Hiška lahko udobno nastani dve osebi in ponuja izjemno možnost sprostitve sredi neokrnjene kočevske narave.", 
     "images": [
       "novibreg/1.jpg",
       "novibreg/2.jpg",
@@ -34,7 +35,7 @@
     }
   },
   {
-    "type": "marker",
+    "type": "location",
     "latitude": 45.677221,
     "longitude": 14.944541,
     "name": "Trnovec",
@@ -66,7 +67,8 @@
     }
   },
   {
-    "type": "marker",
+    "type": "location",
+    "layer": "event",
     "latitude": 45.564999,
     "longitude": 14.807928,
     "name": "Sadni hrib",
@@ -82,7 +84,7 @@
     }
   },
   {
-    "type": "marker",
+    "type": "location",
     "latitude": 45.586130,
     "longitude": 14.999361,
     "name": "Svetli potok",
@@ -98,7 +100,7 @@
     }
   },
   {
-    "type": "marker",
+    "type": "location",
     "latitude": 45.664844,
     "longitude": 14.824620,
     "name": "Mostiček v Slovenski vasi",
@@ -114,7 +116,7 @@
     }
   },
   {
-    "type": "marker",
+    "type": "location",
     "latitude": 45.636399,
     "longitude": 14.867546,
     "name": "Igrišče v UHM",
@@ -130,7 +132,7 @@
     }
   },
   {
-    "type": "marker",
+    "type": "location",
     "latitude": 45.648625,
     "longitude": 14.846501,
     "name": "Ograja v mahovniku",
@@ -146,7 +148,7 @@
     }
   },
   {
-    "type": "marker",
+    "type": "location",
     "latitude": 45.641045,
     "longitude": 14.861719,
     "name": "Notranji skatepark",

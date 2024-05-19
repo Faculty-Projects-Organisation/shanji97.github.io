@@ -59,7 +59,7 @@
             margin-bottom: 0px;
         }
 
-        .insideIcon{
+        .insideIcon {
             position: relative;
             bottom: -30px;
             left: -40px;
@@ -79,7 +79,7 @@
             latitude: 45.642961,
             longitude: 14.859383
         };
-
+        var locationLayerGroup = [];
         var map = L.map('map').setView([kocevjeSettings.latitude, kocevjeSettings.longitude], kocevjeSettings.defaultZoom); // Set the initial view to Kočevje, Slovenia
         // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         L.tileLayer('https://api.mapbox.com/styles/v1/shanji97/clvy7j9ve02aa01qzen8c70cg/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2hhbmppOTciLCJhIjoiY2x2d2UzZHR0MWdiajJqbzlzMWF1cDUxMiJ9.0uHEX89FEbZmbhTiGlFNIA', {
@@ -96,12 +96,30 @@
                 var index = 0;
                 data.forEach(item => {
                     // Create Leaflet element based on type
-                    if (item.type === 'marker') {
-                        setupMarker(item, map, index);
+                    if (item.type === 'location') {
+                        locationLayerGroup.push(setupMarker(item, map, index));
                     }
                     // Add other conditions for other types of elements (icons, polygons, etc.)
                     index++;
+
+
+
                 });
+
+                console.log(locationLayerGroup);
+
+
+
+                var overlayMaps = {
+                    "Locations": L.layerGroup(locationLayerGroup)
+                }
+
+                var overlayMaps2 = {
+                    "Locations2": L.layerGroup(locationLayerGroup)
+                }
+                var layerControl = L.control.layers(overlayMaps).addTo(map);
+                // layerControl.addOverlays(locations,"Locations");
+                // layerControl.addOverlays(locations2,"Locations2");
             })
             .catch(error => console.error('Error loading JSON data:', error));
 
@@ -129,7 +147,7 @@
                 });
                 marker = L.marker([item.latitude, item.longitude], { icon: marker_icon });
             }
-            marker.addTo(map);
+            // marker.addTo(map);
 
             var outer = `<div class='outer' style="background-color: white;">`;
             if (item.background) {
@@ -138,9 +156,9 @@
 
             var divI = "";
             if (item.divIcon != undefined) {
-                divI =`<img class="insideIcon" height="${item.divIcon.height}" width="${item.divIcon.width}" src="${item.divIcon.url}" />`;
+                divI = `<img class="insideIcon" height="${item.divIcon.height}" width="${item.divIcon.width}" src="${item.divIcon.url}" />`;
             }
-            else{
+            else {
                 divI = `<i class="fas fa-camera"></i>`;
             }
             var content = '';
@@ -155,15 +173,21 @@
                 }
                 content += imageContent + '</div>';
             }
+            var architect = "";
+            if(item.architect){
+                architect = `<h4>Arhitekt: ${item.architect}</h4>`;
+            }
 
 
             var popupContent = `${outer}<div class="inner">
-                        <h3 class="bkgd">${item.name}</h3>
+                        <h1 class="bkgd">${item.name}</h1>
+                        ${architect}
                         <p>${item.description}</p>${content}</div></div>`;
 
-
             marker.bindPopup(popupContent);
+            return marker;
         }
     </script>
 </body>
+
 </html>
