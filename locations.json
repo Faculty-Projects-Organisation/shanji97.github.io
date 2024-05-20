@@ -5,7 +5,9 @@
     "longitude": 14.966989,
     "name": "Novi breg",
     "architect": "Bjarke Ingels",
-    "description": "V okolici Novega brega stoji drevesna hiška danskega arhitekta Bjarke Ingelsa, znanega po svojem eksperimentalnem pristopu k arhitekturi, ki združuje funkcionalnost, estetiko in trajnostne vidike. Novi Breg je bil naseljen s Gottscheejskimi Nemci. Pred drugo svetovno vojno je vas imela 12 hiš. Naselje je bilo požgano med drugo svetovno vojno in nikoli obnovljeno. Hiška lahko udobno nastani dve osebi in ponuja izjemno možnost sprostitve sredi neokrnjene kočevske narave.", 
+    "about": "Bjarke Ingels is a renowned Danish architect known for his innovative and sustainable designs, founding the architectural firm BIG (Bjarke Ingels Group), and creating iconic projects such as the 8 House, VIA 57 West, and the Amager Bakke waste-to-energy plant.",
+
+    "description": "Novi Breg was a Gottschee German village with 12 houses that served as a significant Partisan base during WWII, hosting key meetings and bunkers, but was burned by Italian forces in August 1942 and never rebuilt after the war.", 
     "images": [
       "novibreg/1.jpg",
       "novibreg/2.jpg",
@@ -37,7 +39,10 @@
     "latitude": 45.677221,
     "longitude": 14.944541,
     "name": "Trnovec",
-    "description": "Trnovec was attested in historical sources as Tieffenreutter in 1574. After the Second World War, the settlement of Trnovec was administratively combined with Podstenice and shared that name. It was separated again from Podstenice in 1988 and Trnovec was reestablished as a separate settlement.Trnovec was settled by Gottschee Germans in the Middle Ages. It had 17 houses in the early 20th century.At the start of the Second World War, its original population was evicted. As part of the Rog Offensive in the summer of 1942, the village was burned by Italian forces. After the Italian surrender in 1943, the Yugoslav Partisans used a site below the village to store ammunition.",
+    "description": "Trnovec, originally attested as Tieffenreutter in 1574 and settled by Gottschee Germans, was burned by Italian forces during the Rog Offensive in 1942, later used by Yugoslav Partisans to store ammunition.",
+    "architect": "Peter Zumthor",
+    "about": "Peter Zumthor is a celebrated Swiss architect known for his minimalist and sensory-rich designs, which emphasize materiality and craftsmanship, with notable works including the Therme Vals spa and the Bruder Klaus Field Chapel.",
+
     "images": [
       "trnovec/1.jpg",
       "trnovec/2.jpg",
@@ -70,7 +75,10 @@
     "latitude": 45.564999,
     "longitude": 14.807928,
     "name": "Sadni hrib",
-    "description": "Sadni hrib opis",
+    "description": "Sadni Hrib, a Gottschee German village with 13 houses before WWII, was not destroyed during the war but was abandoned by its last inhabitants in 1958, with only three houses remaining by 1953.",
+    "architect": "Alejandro Aravena",
+    "about": "Alejandro Aravena is a renowned Chilean architect celebrated for his innovative, socially conscious designs that address urban inequality and sustainability. He won the Pritzker Prize in 2016 and is known for his work with the architectural firm ELEMENTAL, particularly for projects that blend public interest with private initiative.",
+
     "images": [
       "trnovec/1.jpg"
     ],
@@ -86,7 +94,10 @@
     "latitude": 45.586130,
     "longitude": 14.999361,
     "name": "Svetli potok",
-    "description": "Svetli potok opis",
+    "description": "Svetli Potok, a Gottschee German village with a population of 40-45 in 1574 and 17 houses before WWII, was known for its wool coat workshops employing around 80 people, and was burned by Italian troops in August 1942 during the Rog Offensive.",
+    "architect": "Kazoo Sato",
+    "about": "Kazoo Sato is a prominent architect renowned for his innovative and sustainable designs, blending modern technology with traditional Japanese aesthetics to create iconic and environmentally friendly structures.",
+
     "images": [
       "trnovec/1.jpg"
     ],
@@ -102,7 +113,7 @@
     "latitude": 45.664844,
     "longitude": 14.824620,
     "name": "Mostiček v Slovenski vasi",
-    "description": "Slovenska vas opis",
+    "description": "Mostiček v Slovenski vas: naselje v občini Kočevje z nekaj več kot 200 prebivalci, na njihovo pobudo je bila izpeljana Kočevska akcija, ki je obsegala obnovo ograje in mostička.",
     "images": [
       "trnovec/1.jpg"
     ],
@@ -133,8 +144,8 @@
     "type": "location",
     "latitude": 45.648625,
     "longitude": 14.846501,
-    "name": "Ograja v mahovniku",
-    "description": "Mahovnik opis",
+    "name": "Ograja v Mahovniku",
+    "description": "Ograja v Mahovniku: naselje v občini Kočevje z nekaj več kot 300 prebivalci, na pobudo katerih je bila uspešno izpeljana Kočevska akcija leta 2023.",
     "images": [
       "trnovec/1.jpg"
     ],
@@ -150,7 +161,7 @@
     "latitude": 45.641045,
     "longitude": 14.861719,
     "name": "Notranji skatepark",
-    "description": "Skatepark opis",
+    "description": "Obnova zapuščene hale v industrijski coni Lik, ki obsega izgradnjo notranjega rolkarskega poligona.",
     "images": [
       "skate1.jpeg",
       "skate2.jpeg"

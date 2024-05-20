@@ -75,6 +75,11 @@
             bottom: -30px;
             left: -40px;
         }
+
+        .arch{
+            margin-top: -10px !important;
+            padding-top: -20px !important;
+        }
     </style>
 </head>
 
@@ -108,29 +113,14 @@
                 data.forEach(item => {
                     // Create Leaflet element based on type
                     if (item.type === 'location') {
-                        locationLayerGroup.push(setupMarker(item, map, index));
+
+                        setupMarker(item, map, index)
+                        locationLayerGroup.push();
                     }
                     // Add other conditions for other types of elements (icons, polygons, etc.)
                     index++;
-
-
-
                 });
 
-                console.log(locationLayerGroup);
-
-
-
-                var overlayMaps = {
-                    "Locations": L.layerGroup(locationLayerGroup)
-                }
-
-                var overlayMaps2 = {
-                    "Locations2": L.layerGroup(locationLayerGroup)
-                }
-                var layerControl = L.control.layers(overlayMaps).addTo(map);
-                // layerControl.addOverlays(locations,"Locations");
-                // layerControl.addOverlays(locations2,"Locations2");
             })
             .catch(error => console.error('Error loading JSON data:', error));
 
@@ -186,9 +176,10 @@
             }
             var architect = "";
             if (item.architect) {
-                architect = `<h4>Arhitekt: ${item.architect}</h4>`;
+                architect = `<h4>Arhitekt: ${item.architect}</h4><p class="arch">${item.about}</p>`;
+                if(item.about){
+                }
             }
-
 
             var popupContent = `${outer}<div class="inner">
                         <h1 class="bkgd">${item.name}</h1>
@@ -196,7 +187,7 @@
                         <p>${item.description}</p>${content}</div></div>`;
 
             marker.bindPopup(popupContent);
-            return marker;
+            marker.addTo(map);
         }
     </script>
 </body>
