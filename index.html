@@ -163,7 +163,7 @@
                 divI = `<i class="fas fa-camera"></i>`;
             }
             var content = '';
-            if (item.images != undefined) {
+            if (item.images != undefined && item.images.length > 0) {
                 var imageContent = '<div class="images">';
                 for (var i = 0; i < item.images.length; i++) {
                     if (i == 0) {

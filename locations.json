@@ -29,7 +29,7 @@
       "height": 50
     },
     "divIcon":{
-      "url": "icons\\hiska1.png",
+      "url": "icons\\hiska2.png",
       "width" : 100,
       "height" : 100
     }
@@ -69,7 +69,7 @@
       "height": 50
     },
     "divIcon":{
-      "url": "icons\\hiska3.png",
+      "url": "icons\\hiska4.png",
       "width" : 100,
       "height" : 100
     }
@@ -93,7 +93,7 @@
       "width": 50,
       "height": 50
     },"divIcon":{
-      "url": "icons\\hiska1.png",
+      "url": "icons\\hiska3.png",
       "width" : 100,
       "height" : 100
     }
@@ -136,27 +136,7 @@
       "width": 50,
       "height": 50
     },"divIcon":{
-      "url": "icons\\hiska1.png",
-      "width" : 100,
-      "height" : 100
-    }
-  },
-  {
-    "type": "location",
-    "latitude": 45.636399,
-    "longitude": 14.867546,
-    "name": "Igrišče v UHM",
-    "description": "UHM opis",
-    "images": [
-      "trnovec/1.jpg"
-    ],
-    "background": "icons/bkg.jpg",
-    "icon": {
-      "url": "icons\\akcije1.png",
-      "width": 50,
-      "height": 50
-    },"divIcon":{
-      "url": "icons\\hiska1.png",
+      "url": "icons\\akcije2.png",
       "width" : 100,
       "height" : 100
     }
@@ -176,7 +156,7 @@
       "width": 50,
       "height": 50
     },"divIcon":{
-      "url": "icons\\hiska1.png",
+      "url": "icons\\akcije3.png",
       "width" : 100,
       "height" : 100
     }
@@ -188,14 +168,17 @@
     "name": "Notranji skatepark",
     "description": "Obnova zapuščene hale v industrijski coni Lik, ki obsega izgradnjo notranjega rolkarskega poligona.",
     "images": [
-      "skate1.jpeg",
-      "skate2.jpeg"
+     
     ],
     "background": "icons/bkg.jpg",
     "icon": {
       "url": "icons\\skatepark.png",
       "width": 50,
       "height": 50
+    },"divIcon":{
+      "url": "icons\\skatepark.png",
+      "width" : 100,
+      "height" : 100
     }
   }
 ]
