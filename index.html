@@ -20,6 +20,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         body {
             padding: 0;
@@ -31,6 +34,51 @@
         #map {
             height: 100%;
             width: 100vw;
+        }
+
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.0);
+        }
+
+        .bkgd {
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: normal;
+            font-variation-settings: "slnt" 0;
+        }
+
+        .outer {
+            margin: 0px 0px 0px 0px;
+            border-radius: 15px;
+            color: #333;
+            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+            overflow: auto;
+        }
+
+        .inner {
+            margin: 50px 15px !important;
+            background-color: rgba(255, 255, 255, .9);
+            border-radius: 5px;
+            padding: 25px 25px 5px 25px;
+        }
+
+        .images {
+            margin-top: 60px;
+            margin-bottom: 0px;
+        }
+
+        .insideIcon {
+            position: relative;
+            bottom: -30px;
+            left: -40px;
+        }
+
+        .arch{
+            margin-top: -10px !important;
+            padding-top: -20px !important;
         }
     </style>
 </head>
@@ -44,15 +92,10 @@
             minimalZoom: 12,
             maximalZoom: 20,
             defaultZoom: 11,
-
             latitude: 45.642961,
             longitude: 14.859383
         };
-
-
-
-
-
+        var locationLayerGroup = [];
         var map = L.map('map').setView([kocevjeSettings.latitude, kocevjeSettings.longitude], kocevjeSettings.defaultZoom); // Set the initial view to Kočevje, Slovenia
         // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         L.tileLayer('https://api.mapbox.com/styles/v1/shanji97/clvy7j9ve02aa01qzen8c70cg/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2hhbmppOTciLCJhIjoiY2x2d2UzZHR0MWdiajJqbzlzMWF1cDUxMiJ9.0uHEX89FEbZmbhTiGlFNIA', {
@@ -66,15 +109,18 @@
             .then(response => response.json())
             .then(data => {
                 // Iterate over JSON data
+                var index = 0;
                 data.forEach(item => {
                     // Create Leaflet element based on type
-                    if (item.type === 'marker') {
-                        setupMarker(item, map);
-                    } else if (item.type === 'circle') {
-                        setUpCircle(item, map)
+                    if (item.type === 'location') {
+
+                        setupMarker(item, map, index)
+                        locationLayerGroup.push();
                     }
                     // Add other conditions for other types of elements (icons, polygons, etc.)
+                    index++;
                 });
+
             })
             .catch(error => console.error('Error loading JSON data:', error));
 
@@ -90,11 +136,7 @@
             // Add any other options you want to customize the carousel
         });
 
-        function setupMarker(item, map) {
-
-
-
-
+        function setupMarker(item, map, index) {
             var marker = L.marker([item.latitude, item.longitude]);
             if (item.icon) {
                 var iconImage = new Image();
@@ -106,34 +148,46 @@
                 });
                 marker = L.marker([item.latitude, item.longitude], { icon: marker_icon });
             }
-            marker.addTo(map);
-            var popupContent = `
-                        <h3>${item.name}</h3>
-                        <p>${item.description}</p>
-                        <!-- Add more content as needed -->`;
-            if (item.images != undefined) {
-                var imageContent = '';
+            // marker.addTo(map);
+
+            var outer = `<div class='outer' style="background-color: white;">`;
+            if (item.background) {
+                outer = `<div class="outer" style="background-image:url('${item.background}'); background-size: 100% 100%; background-repeat:no-repeat; background-position: center">`;
+            }
+
+            var divI = "";
+            if (item.divIcon != undefined) {
+                divI = `<img class="insideIcon" height="${item.divIcon.height}" width="${item.divIcon.width}" src="${item.divIcon.url}" />`;
+            }
+            else {
+                divI = `<i class="fas fa-camera"></i>`;
+            }
+            var content = '';
+            if (item.images != undefined && item.images.length > 0) {
+                var imageContent = '<div class="images">';
                 for (var i = 0; i < item.images.length; i++) {
                     if (i == 0) {
-                        imageContent += `<a data-fancybox="images" href="${item.images[i]}"><i class="fas fa-camera"></i></a>`;
+                        imageContent += `<a data-fancybox="images" href="${item.images[i]}">${divI}</a>`;
                     } else {
                         imageContent += `<a data-fancybox="images" href="${item.images[i]}"></a>`;
                     }
                 }
-                popupContent += imageContent;
+                content += imageContent + '</div>';
             }
+            var architect = "";
+            if (item.architect) {
+                architect = `<h4>Arhitekt: ${item.architect}</h4><p class="arch">${item.about}</p>`;
+                if(item.about){
+                }
+            }
+
+            var popupContent = `${outer}<div class="inner">
+                        <h1 class="bkgd">${item.name}</h1>
+                        ${architect}
+                        <p>${item.description}</p>${content}</div></div>`;
+
             marker.bindPopup(popupContent);
-        }
-
-        function returnMarkerwithIcon(icon) {
-
-        }
-
-        function setUpCircle(item, map) {
-            var circle = L.circle([item.latitude, item.longitude], {
-                radius: item.radius,
-                // Add any other circle options
-            }).addTo(map);
+            marker.addTo(map);
         }
     </script>
 </body>
